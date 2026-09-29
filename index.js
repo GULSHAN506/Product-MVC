@@ -1,3 +1,4 @@
+
 import cors from "cors";
 import express from "express";
 import { connectDB } from "./utils/DB.js";
@@ -11,12 +12,16 @@ const app = express();
 
 connectDB();
 
+// CORS
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      // Add your Netlify frontend URL here later
+      "https://gulshan-ecommerce.netlify.app/",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
@@ -28,3 +33,4 @@ app.use("/user", UserRoute);
 app.listen(5050, () => {
   console.log("Server is running on port 5050");
 });
+
