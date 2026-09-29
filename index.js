@@ -13,18 +13,17 @@ const app = express();
 connectDB();
 
 // CORS
-app.use(
+
+ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      // Add your Netlify frontend URL here later
-      "https://gulshan-ecommerce.netlify.app/",
+      "https://gulfashionstore.netlify.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
 app.use(express.json());
 
 app.use("/products", productRouter);
